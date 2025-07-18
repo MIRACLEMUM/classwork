@@ -1,16 +1,10 @@
 // TopCreatorCard.jsx
 import React from 'react';
-import { motion } from 'framer-motion';
 
 const TopCreatorCard = ({ id, name, image, sales }) => {
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 40 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      whileHover={{ scale: 1.02 }}
-      transition={{ duration: 0.6, ease: 'easeOut' }}
-      viewport={{ once: true }}
-      className="bg-[#3B3B3B] rounded-xl p-5 relative flex flex-row md:flex-row lg:flex-col items-center gap-4 shadow hover:shadow-lg hover:shadow-black/30 transition-shadow duration-300"
+    <div
+      className="bg-[#3B3B3B] rounded-xl p-5 relative flex flex-row md:flex-row lg:flex-col items-center gap-4 shadow hover:shadow-lg hover:shadow-black/30 transition-transform duration-300 hover:scale-[1.02]"
     >
       <span className="absolute top-3 left-3 bg-[#1c1c1e] text-white text-sm font-bold w-8 h-8 flex items-center justify-center rounded-full">
         {id}
@@ -26,7 +20,7 @@ const TopCreatorCard = ({ id, name, image, sales }) => {
           Total Sales: <span className="text-white font-semibold">{sales} ETH</span>
         </p>
       </div>
-    </motion.div>
+    </div>
   );
 };
 
