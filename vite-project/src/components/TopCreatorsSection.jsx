@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import TopCreatorCard from './TopCreatorCard';
 
 const creators = [
@@ -17,23 +17,41 @@ const creators = [
 ];
 
 const TopCreatorSection = () => {
+  const [showCount, setShowCount] = useState(creators.length);
+
+  useEffect(() => {
+    const updateCount = () => {
+      const width = window.innerWidth;
+      if (width < 640) setShowCount(5);        // phones
+      else if (width < 1024) setShowCount(6);  // tablets
+      else setShowCount(creators.length);      // desktop
+    };
+
+    updateCount();
+    window.addEventListener('resize', updateCount);
+    return () => window.removeEventListener('resize', updateCount);
+  }, []);
+
   return (
-    <section className="bg-[#1c1c1e] text-white px-6 py-16">
+    <section className="bg-[#2B2B2B]] text-white px-6 py-16">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
-        <div className="flex flex-col md:flex-row justify-between items-center mb-12 gap-4">
-          <div>
+        <div className="flex flex-col md:flex-row md:justify-between md:items-center mb-12 gap-4">
+          <div className="text-left">
             <h2 className="text-3xl font-bold">Top Creators</h2>
             <p className="text-gray-400">Checkout Top Rated Creators On The NFT Marketplace</p>
           </div>
-          <button className="flex items-center gap-2 border border-purple-500 px-4 py-2 rounded-lg hover:bg-purple-600 transition">
-            <span>🚀 View Rankings</span>
-          </button>
+          {/* Visible on md+ */}
+          <div className="hidden md:flex">
+            <button className="flex items-center gap-2 border border-purple-500 px-4 py-2 rounded-lg hover:bg-purple-600 transition">
+              🚀 View Rankings
+            </button>
+          </div>
         </div>
 
         {/* Creator Cards Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-          {creators.map((creator) => (
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          {creators.slice(0, showCount).map((creator) => (
             <TopCreatorCard
               key={creator.id}
               id={creator.id}
@@ -42,6 +60,13 @@ const TopCreatorSection = () => {
               sales={creator.sales}
             />
           ))}
+        </div>
+
+        {/* Visible on small screens */}
+        <div className="mt-8 md:hidden text-center">
+          <button className="flex mx-auto items-center gap-2 border border-purple-500 px-4 py-2 rounded-lg hover:bg-purple-600 transition">
+            🚀 View Rankings
+          </button>
         </div>
       </div>
     </section>

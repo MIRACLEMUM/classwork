@@ -2,10 +2,11 @@
 import { FaRocket } from "react-icons/fa";
 import CountUp from "react-countup";
 import heroimage from "../assets/images/Image Placeholder (1).png";
+import avatar from "../assets/images/avatar.png"; // 👈 Add your avatar image here
 
 const HeroSection = () => {
   return (
-    <section className="bg-[#2B2B2B] text-white px-6 md:px-20 py-16 grid md:grid-cols-2 gap-10 items-center">
+    <section className="bg-[#2B2B2B] text-white px-6 md:px-20 py-16 grid md:grid-cols-2 gap-10 items-center max-w-7xl mx-auto">
       
       {/* LEFT SIDE */}
       <div>
@@ -23,7 +24,7 @@ const HeroSection = () => {
         </button>
 
         {/* Animated Stats */}
-        <div className="flex gap-8">
+        <div className="flex gap-8 flex-wrap">
           <div>
             <h3 className="text-2xl font-bold">
               <CountUp end={240} duration={2} />k+
@@ -52,6 +53,17 @@ const HeroSection = () => {
           alt="Space Walking"
           className="w-full h-[420px] object-cover"
         />
+        <div className="p-4">
+          <h4 className="font-semibold text-lg mb-2">Space Walking</h4>
+          <div className="flex items-center gap-3">
+            <img
+              src={avatar}
+              alt="Animakid"
+              className="w-6 h-6 rounded-full object-cover"
+            />
+            <p className="text-sm text-gray-400">Animakid</p>
+          </div>
+        </div>
       </div>
     </section>
   );
