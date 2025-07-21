@@ -1,7 +1,13 @@
 import Navbar from "./components/Navbar";
 import HeroSection from "./components/HeroSection";
 import TrendingSection from "./components/TrendingSection";
-import TopCreatorsSection from "./components/TopCreatorsSection"; 
+import TopCreatorsSection from "./components/TopCreatorsSection";
+ import BrowseCategories from "./components/BrowseCategories";
+ import DiscoverNFTSection from "./components/DiscoverNFTSection";
+  import FeaturedNFT from "./components/FeaturedNFT";
+
+
+
 
 
 
@@ -13,6 +19,11 @@ function App() {
       <HeroSection />
       <TrendingSection />
       <TopCreatorsSection />
+      <BrowseCategories />
+     <DiscoverNFTSection />
+     <FeaturedNFT />
+
+
 
 
        
